@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import qs from 'qs';
 
-import { Wrapper, Card, Templates, Form, Button } from './styles';
+import { Wrapper, Card, Templates, Form, Button, Image } from './styles';
 import logo from '../../images/logo.svg';
 
 interface Template {
@@ -11,11 +11,11 @@ interface Template {
   box_count: number;
 }
 
-const Home = () => {
+const Home: React.FC = () => {
   const [templates, setTemplates] = useState<Template[]>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<Template>();
   const [boxes, setBoxes] = useState<string[]>([]);
-  const [generatedMeme, setGeneratedMeme] = useState(String);
+  const [generatedMeme, setGeneratedMeme] = useState<string>();
 
   useEffect(() => {
     (async () => {
@@ -30,7 +30,7 @@ const Home = () => {
   const handleInputChange = (index: number) => (
     e: ChangeEvent<HTMLInputElement>
   ) => {
-    const newValues: string[] = boxes;
+    const newValues = boxes;
     newValues[index] = e.target.value;
     setBoxes(newValues);
   };
@@ -70,12 +70,12 @@ const Home = () => {
 
       <Card>
         {generatedMeme && (
-          <>
+          <Image>
             <img src={generatedMeme} alt="Generated Meme" />
             <Button type="button" onClick={handleReset}>
               Criar outro meme
             </Button>
-          </>
+          </Image>
         )}
         {!generatedMeme && (
           <>

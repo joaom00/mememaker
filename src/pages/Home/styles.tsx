@@ -17,6 +17,10 @@ export const Card = styled.div`
   margin-top: 15px;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 640px) {
+    width: 350px;
+  }
+
   h2 {
     font-size: 22px;
     color: #392d2d;
@@ -76,5 +80,13 @@ export const Button = styled.button`
 
   &:hover {
     background: #3672a3;
+  }
+`;
+
+export const Image = styled.div`
+  @media (max-width: 640px) {
+    img {
+      width: 315px;
+    }
   }
 `;
